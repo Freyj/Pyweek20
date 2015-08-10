@@ -10,6 +10,7 @@
 #-------------------------------------------------------------------------------
 
 import pygame
+import ptext
 from constants_pw import *
 from functions import *
 class Game:
@@ -42,13 +43,18 @@ class Game:
                             rect_high = pygame.Rect((260,300),(260,60))
                             rect_quit = pygame.Rect((260,390),(260,60))
                             if pygame.Rect.collidepoint(rect_new, mouse):
-                                game_state = STATES[2]
+                                self.state = STATES[3]
                             elif pygame.Rect.collidepoint(rect_high,mouse):
-                                game_state = STATES[3]
+                                self.state = STATES[2]
                             elif pygame.Rect.collidepoint(rect_quit,mouse):
                                 self.started = False
+                        if self.state == STATES[2]:
+                            rect_back = pygame.Rect((10,10), (260, 60))
+                            if pygame.Rect.collidepoint(rect_back, mouse):
+                                self.state = STATES[1]
                         #events on the highscore menu
                         #events on the game screen
+                #start menu
                 if self.state == STATES[1]:
                     #make pictures used & blit them
                     self.background = loadImg('img','background.jpg')
@@ -63,6 +69,25 @@ class Game:
                     self.screen.blit(b_quit, (260,390))
 
                     pygame.display.flip()
+                #highscore display
+                elif self.state == STATES[2]:
+                    self.screen.blit(self.background, (0,0))
+                    b_back = loadImg('img','b_back.png')
+                    self.screen.blit(b_back, (10,10))
+                    banner = loadImg('img', 'highscores.png')
+                    self.screen.blit(banner, (0,0))
+
+                    pygame.display.flip()
+                #game
+                elif self.state == STATES[3]:
+                    self.screen.blit(self.background, (0,0))
+                    b_back = loadImg('img','b_back.png')
+                    bg_ui = loadImg('img', 'bg_ui.png')
+                    self.screen.blit(bg_ui, (0,0))
+                    pygame.display.flip()
+                #game_over display
+                elif self.state == STATES[4]:
+                    pass
 
             self.clock.tick(60)
             pygame.quit()
