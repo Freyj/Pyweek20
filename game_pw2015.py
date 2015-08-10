@@ -60,7 +60,9 @@ class Game:
                                 self.state = STATES[4]
                         #events on the game over screen
                         if self.state == STATES[4]:
-                            pass
+                            rect_back = pygame.Rect((10,10), (260, 60))
+                            if pygame.Rect.collidepoint(rect_back, mouse):
+                                self.state = STATES[1]
                 #start menu
                 if self.state == STATES[1]:
                     #make pictures used & blit them
@@ -110,7 +112,10 @@ class Game:
                 elif self.state == STATES[4]:
                     game_over = loadImg('img', 'game_over.png')
                     self.screen.blit(game_over, (0,0))
+                    b_back = loadImg('img','b_back.png')
+                    self.screen.blit(b_back, (10,10))
                     pygame.display.flip()
+
 
             self.clock.tick(60)
             pygame.quit()
