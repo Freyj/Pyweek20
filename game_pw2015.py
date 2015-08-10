@@ -55,7 +55,9 @@ class Game:
                                 self.state = STATES[1]
                         #events on the game screen
                         if self.state == STATES[3]:
-                            pass
+                            rect_abandon = pygame.Rect((720,10), (50, 50))
+                            if pygame.Rect.collidepoint(rect_abandon, mouse):
+                                self.state = STATES[4]
                         #events on the game over screen
                         if self.state == STATES[4]:
                             pass
@@ -106,7 +108,9 @@ class Game:
                     pygame.display.flip()
                 #game_over display
                 elif self.state == STATES[4]:
-                    pass
+                    game_over = loadImg('img', 'game_over.png')
+                    self.screen.blit(game_over, (0,0))
+                    pygame.display.flip()
 
             self.clock.tick(60)
             pygame.quit()
