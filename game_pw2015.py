@@ -112,8 +112,8 @@ class Game:
                 elif self.state == STATES[4]:
                     game_over = loadImg('img', 'game_over.png')
                     self.screen.blit(game_over, (0,0))
-                    b_back = loadImg('img','b_back.png')
-                    self.screen.blit(b_back, (10,10))
+                    b_backmen = loadImg('img','b_backmen.png')
+                    self.screen.blit(b_backmen, (10,10))
                     pygame.display.flip()
 
 
