@@ -48,12 +48,17 @@ class Game:
                                 self.state = STATES[2]
                             elif pygame.Rect.collidepoint(rect_quit,mouse):
                                 self.started = False
+                        #events on the highscore screen
                         if self.state == STATES[2]:
                             rect_back = pygame.Rect((10,10), (260, 60))
                             if pygame.Rect.collidepoint(rect_back, mouse):
                                 self.state = STATES[1]
-                        #events on the highscore menu
                         #events on the game screen
+                        if self.state == STATES[3]:
+                            pass
+                        #events on the game over screen
+                        if self.state == STATES[4]:
+                            pass
                 #start menu
                 if self.state == STATES[1]:
                     #make pictures used & blit them
@@ -76,14 +81,28 @@ class Game:
                     self.screen.blit(b_back, (10,10))
                     banner = loadImg('img', 'highscores.png')
                     self.screen.blit(banner, (0,0))
+                    #put a placeholder box to test size
+                    #TODO : do a highscore thingy
+                    placeholder = pygame.Surface((500,400))
+                    placeholder.fill(WHITE)
+                    self.screen.blit(placeholder, (150,190))
 
                     pygame.display.flip()
                 #game
                 elif self.state == STATES[3]:
                     self.screen.blit(self.background, (0,0))
-                    b_back = loadImg('img','b_back.png')
-                    bg_ui = loadImg('img', 'bg_ui.png')
-                    self.screen.blit(bg_ui, (0,0))
+                    b_abandon = loadImg('img','b_abandon.png')
+                    portrait_cap = loadImg('img', 'Space_Captain_min.png')
+                    portrait_pil = loadImg('img', 'Pilotmini.png')
+                    portrait_sci = loadImg('img', 'Science_Officer_min.png')
+                    portrait_sec = loadImg('img', 'SecurityOfficer_min.png')
+                    #bg_ui = loadImg('img', 'bg_ui.png')
+                    #self.screen.blit(bg_ui, (0,0))
+                    self.screen.blit(portrait_cap, (30,10))
+                    self.screen.blit(portrait_pil, (170,10))
+                    self.screen.blit(portrait_sci, (320,10))
+                    self.screen.blit(portrait_sec, (470,10))
+                    self.screen.blit(b_abandon, (720, 10))
                     pygame.display.flip()
                 #game_over display
                 elif self.state == STATES[4]:
