@@ -27,6 +27,7 @@ class Game:
             self.state = STATES[1]
 
     def start(self):
+
             while self.started:
                 for event in pygame.event.get():
                   if event.type == pygame.QUIT:
@@ -97,15 +98,21 @@ class Game:
                     self.screen.blit(self.background, (0,0))
                     b_abandon = loadImg('img','b_abandon.png')
                     portrait_cap = loadImg('img', 'Space_Captain_min.png')
+                    alive_inf = loadImg('img', 'alive.png')
+                    dead_inf = loadImg('img', 'dead.png')
                     portrait_pil = loadImg('img', 'Pilotmini.png')
                     portrait_sci = loadImg('img', 'Science_Officer_min.png')
                     portrait_sec = loadImg('img', 'SecurityOfficer_min.png')
                     #bg_ui = loadImg('img', 'bg_ui.png')
                     #self.screen.blit(bg_ui, (0,0))
                     self.screen.blit(portrait_cap, (30,10))
+                    self.screen.blit(alive_inf, (110,10))
                     self.screen.blit(portrait_pil, (170,10))
+                    self.screen.blit(alive_inf, (250,10))
                     self.screen.blit(portrait_sci, (320,10))
+                    self.screen.blit(alive_inf, (400,10))
                     self.screen.blit(portrait_sec, (470,10))
+                    self.screen.blit(alive_inf, (550,10))
                     self.screen.blit(b_abandon, (720, 10))
                     pygame.display.flip()
                 #game_over display
