@@ -11,6 +11,7 @@
 
 import pygame
 import ptext
+import mappy
 from constants_pw import *
 from functions import *
 class Game:
@@ -95,6 +96,7 @@ class Game:
                     pygame.display.flip()
                 #game
                 elif self.state == STATES[3]:
+                    map_game = mappy.Map('map.txt')
                     self.screen.blit(self.background, (0,0))
                     b_abandon = loadImg('img','b_abandon.png')
                     portrait_cap = loadImg('img', 'Space_Captain_min.png')
@@ -105,6 +107,7 @@ class Game:
                     portrait_sec = loadImg('img', 'SecurityOfficer_min.png')
                     #bg_ui = loadImg('img', 'bg_ui.png')
                     #self.screen.blit(bg_ui, (0,0))
+                    map_surf = map_game.makeMapSurface()
                     self.screen.blit(portrait_cap, (30,10))
                     self.screen.blit(alive_inf, (110,10))
                     self.screen.blit(portrait_pil, (170,10))
@@ -114,6 +117,7 @@ class Game:
                     self.screen.blit(portrait_sec, (470,10))
                     self.screen.blit(alive_inf, (550,10))
                     self.screen.blit(b_abandon, (720, 10))
+                    self.screen.blit(map_surf, (10,150))
                     pygame.display.flip()
                 #game_over display
                 elif self.state == STATES[4]:
