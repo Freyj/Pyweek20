@@ -18,7 +18,7 @@ from constants_pw import *
 class Map:
 
     def __init__(self, path):
-        self.size_case = (14,26)
+        self.size_case = (14,25)
         self.size_real = (448, 768)
         self.map = self.createMap(path)
 
@@ -36,7 +36,7 @@ class Map:
         return self.map[x]
 
     def tupToX(self, x, y):
-        return x * 26 + y % 26
+        return x * 25 + y % 25
 
     def createMap(self, path):
         return self.deleteReturn(path)
@@ -57,32 +57,26 @@ class Map:
                     s = pygame.transform.rotate(s, 270)
                 elif self.getType(self.tupToX(i,j)) == '4':
                     s = functions.loadImg('img', 'flat.png')
-                    s = pygame.transform.rotate(s, 270)
+                    s = pygame.transform.rotate(s, 90)
                 elif self.getType(self.tupToX(i,j)) == '5':
                     s = functions.loadImg('img', 'sol.png')
                 elif self.getType(self.tupToX(i,j)) == '6':
                     s = functions.loadImg('img', 'flat.png')
-                    s = pygame.transform.rotate(s, 180)
+                    s = pygame.transform.rotate(s, 270)
                 elif self.getType(self.tupToX(i,j)) == '7':
                     s = functions.loadImg('img', 'corner.png')
-                    s = pygame.transform.rotate(s, 180)
+                    s = pygame.transform.rotate(s, 90)
                 elif self.getType(self.tupToX(i,j)) == '8':
                     s = functions.loadImg('img', 'flat.png')
-                    s = pygame.transform.rotate(s, 90)
+                    s = pygame.transform.rotate(s, 180)
                 elif self.getType(self.tupToX(i,j)) == '9':
                     s = functions.loadImg('img', 'corner.png')
-                    s = pygame.transform.rotate(s, 90)
+                    s = pygame.transform.rotate(s, 180)
                 else:
                     s = functions.loadImg('img', 'empty.png')
-                pygame.Surface.blit(surf, s, (32*i, 32*j))
+                pygame.Surface.blit(surf, s, (32*j, 32*i))
                 surf = surf.convert_alpha()
 
         return surf
-
-
-
-m = Map('map.txt')
-
-print(m)
 
 
